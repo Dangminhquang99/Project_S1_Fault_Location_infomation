@@ -8,30 +8,37 @@ import Rpt as rbt
 # Cài đặt định dạng trang web
 st.set_page_config(page_title="Tra cứu sự cố",layout="wide",initial_sidebar_state="expanded")
 
-# Cài đặt tittle và chế độ chia cột
-colm1, colm2=st.columns([5,1],vertical_alignment="bottom")
-colm1.title("📊 TRA CỨU SỰ CỐ" )
-view_mode=colm2.toggle("🔄 Chế độ chia cột")
+st.title("⚡ TRA CỨU SỰ CỐ" )
 
-# Lựa chọn tình trạng đóng lặp lại
-F79, TimeF, select_dz, phaF = al.initial_info()
+# Thông tin ban đầu
+TimeF, select_dz, phaF, F79, isc, dis87, dis21, disFL, dis87N1, dis21N1, disFLN1,subs, df = al.initial_info()
 
-#Cấu hình đường dây, tba
-#select_dz=gf.select_name_dz()
-subs=gf.select_tba_1(select_dz)
-df = gf.accum(select_dz)
+#Khởi chạy tiến trình tại trạm biến áp 1
+dis87, dis21, disFL, result_87, result_21, result_FL, value87,value21, valueFL = al.process(subs[0], df,"subs_0",dis87, dis21, disFL)
 
-#Chạy chương trình
-colm6, colm7=st.columns(2)
-if view_mode:
-    with colm6:  #TẠI TBA 1 #cột 1
-            al.process(subs[0],df,"subs_0")
-    with colm7:#TẠI TBA 2 #cột 2
-            al.process(subs[1],df,"subs_1")
-else:   
-    #with st.expander(f"{subs[0]}"): #TẠI TBA 1 #cột 1
-        dis87, dis21, result_87, result_21 = al.process(subs[0], df,"subs_0")
-   # with st.expander(f"{subs[1]}"): #TẠI TBA 2 #cột 2
-        dis87_1, dis21_1, result_87_1, result_21_1=al.process(subs[1], df,"subs_1")
+    #Khởi chạy tiến trình tại trạm biến áp 2
+dis87_1, dis21_1, disFL_1, result_87_1, result_21_1, result_FL_1, value87_1,value21_1, valueFL_1 = al.process(subs[1], df,"subs_1", dis87N1, dis21N1, disFLN1)
 
-rbt.report(TimeF, phaF, F79, select_dz, subs, dis87, dis21, result_87, result_21, dis87_1, dis21_1, result_87_1, result_21_1)
+search=st.button("🔍 Tra cứu", key=f"{subs}",type="primary",width="stretch")
+if search:
+    if result_87:
+        al.info(df, result_87, "F87", value87, subs[0])
+
+    if result_21:
+        al.info(df, result_21, "F21", value21, subs[0])
+
+    if result_FL:
+        al.info(df, result_FL, "FL", valueFL, subs[0])
+
+    if result_87_1:
+        al.info(df, result_87_1, "F87", value87_1, subs[1])
+
+    if result_21_1:
+        al.info(df, result_21_1, "F21", value21_1, subs[1])
+
+    if result_FL_1:
+        al.info(df, result_FL_1, "FL", valueFL_1, subs[1])
+
+
+
+rbt.report(TimeF, select_dz, phaF, isc, F79, subs, dis87, dis21, disFL, result_87, result_21, result_FL, dis87_1, dis21_1, disFL_1, result_87_1, result_21_1, result_FL_1)
