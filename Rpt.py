@@ -48,24 +48,24 @@ def report (TimeF, select_dz, phaF, isc, F79, subs, dis87, dis21, disFL, result_
 
             content.append(Paragraph(text, style))
 
-        data_1 = [
-            ("Khoảng cách F87", dis87_1, result_87_1),
-            ("Khoảng cách F21", dis21_1, result_21_1),
-            ("Khoảng cách FL", disFL_1, result_FL_1),
-        ]
+    data_1 = [
+        ("Khoảng cách F87", dis87_1, result_87_1),
+        ("Khoảng cách F21", dis21_1, result_21_1),
+        ("Khoảng cách FL", disFL_1, result_FL_1),
+    ]
 
-        if not any([dis21_1, dis87_1, disFL_1]):
-            content.append(Paragraph(f"*{subs[1]} : No data", style))
-        else:
-            content.append(Paragraph(f"*{subs[1]}", style))
+    if not any([dis21_1, dis87_1, disFL_1]):
+        content.append(Paragraph(f"*{subs[1]} : No data", style))
+    else:
+        content.append(Paragraph(f"*{subs[1]}", style))
 
-            for label, dis, result in data_1:
-                if dis:
-                    text = f"     - {label}: {dis}m <=> tương ứng khoảng cột {result[0]}-{result[1]}"
-                else:
-                    text = f"     - {label}: No data"
+        for label, dis, result in data_1:
+            if dis:
+                text = f"     - {label}: {dis}m <=> tương ứng khoảng cột {result[0]}-{result[1]}"
+            else:
+                text = f"     - {label}: No data"
 
-                content.append(Paragraph(text, style))
+            content.append(Paragraph(text, style))
 
 
     doc.build(content)
