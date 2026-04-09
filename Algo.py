@@ -11,7 +11,7 @@ def initial_info():
     phaF = st.pills("Pha sự cố:", ["A-B-C","A-N", "B-N", "C-N", "AB", "BC", "AC"],width=600)
     F79 = st.pills("Tình trạng đóng lặp lại:", ["Thành công", "Không thành công", "Không đóng lặp lại"],width=600)
     weather= st.pills("Thời tiết:", ["Không mưa", "Mưa", "Mưa kèm giông sét"],width=600)
-    isc= st.number_input(f"Dòng sự cố:", min_value=0)
+    isc= st.number_input(f"Dòng sự cố Isc (A):", min_value=0)
     
 
     st.subheader(f"📍{subs[0]}")
@@ -96,5 +96,3 @@ def process(subs, df, subs_no, dis87, dis21, disFL):
     result_FL, valueFL = find_positions(disFL, df, "FL", subs_no)
 
     return dis87, dis21, disFL, result_87, result_21, result_FL, value87,value21, valueFL
-    
-
