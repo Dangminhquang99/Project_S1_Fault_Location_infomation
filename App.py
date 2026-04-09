@@ -3,7 +3,7 @@ import pandas as pd
 import openpyxl as op
 import Gfile as gf
 import Algo as al
-import Rpt as rbt
+import Rpt as rpt
 
 # Cài đặt định dạng trang web
 st.set_page_config(page_title="Tra cứu sự cố",layout="wide",initial_sidebar_state="expanded")
@@ -11,7 +11,7 @@ st.set_page_config(page_title="Tra cứu sự cố",layout="wide",initial_sideba
 st.title("⚡ TRA CỨU SỰ CỐ" )
 
 # Thông tin ban đầu
-TimeF, select_dz, phaF, F79, isc, dis87, dis21, disFL, dis87N1, dis21N1, disFLN1,subs, df = al.initial_info()
+TimeF, select_dz, phaF, F79, isc, weather, dis87, dis21, disFL, dis87N1, dis21N1, disFLN1,subs, df, comment = al.initial_info()
 
 #Khởi chạy tiến trình tại trạm biến áp 1
 dis87, dis21, disFL, result_87, result_21, result_FL, value87,value21, valueFL = al.process(subs[0], df,"subs_0",dis87, dis21, disFL)
@@ -40,5 +40,6 @@ if search:
         al.info(df, result_FL_1, "FL", valueFL_1, subs[1])
 
 
+TQLVH=gf.g_map.loc[gf.g_map['TEN DZ'] == select_dz, 'TQLVH'].iloc[0]
 
-rbt.report(TimeF, select_dz, phaF, isc, F79, subs, dis87, dis21, disFL, result_87, result_21, result_FL, dis87_1, dis21_1, disFL_1, result_87_1, result_21_1, result_FL_1)
+rpt.report(TimeF, select_dz, phaF, isc, weather, F79, subs, dis87, dis21, disFL, result_87, result_21, result_FL, dis87_1, dis21_1, disFL_1, result_87_1, result_21_1, result_FL_1, TQLVH, comment)
