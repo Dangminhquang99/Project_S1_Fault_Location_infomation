@@ -90,15 +90,15 @@ def report (TimeF, select_dz, phaF, isc, weather, F79, subs, dis87, dis21, disFL
 
 
     if TQLVH=="Tổ QLVH đường dây Nha Trang":
-        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Nha Trang, SĐT: 0888007911, Email: TQLVHDZNhaTrang</i>", style_1))
+        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Nha Trang, SĐT: 0888007911, Email: TQLVHDZNhaTrang@gmail.com </i>", style_1))
     elif TQLVH=="Tổ QLVH đường dây Cam Ranh":
-        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Cam Ranh, SĐT: 0839861405, Email: TQLVHDZCamRanh</i>", style_1))    
+        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Cam Ranh, SĐT: 0839861405, Email: TQLVHDZCamRanh@gmail.com </i>", style_1))    
     elif TQLVH=="Tổ QLVH đường dây Phan Rang":
         content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Phan Rang, SĐT: 0866236556, Email:  toqlvhdzphanrang@gmail.com </i>", style_1)) 
     elif TQLVH=="Tổ QLVH đường dây Cam Ranh, Phan Rang":
         content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Cam Ranh, SĐT: 0839861405, Email: TQLVHDZCamRanh<br/>* Tổ QLVH DZ Phan Rang, SĐT: 0866236556, Email:  toqlvhdzphanrang@gmail.com </i>", style_1))
     elif TQLVH =="Tổ QLVH đường dây Nha Trang, Cam Ranh, Phan Rang":
-        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Nha Trang, SĐT: 0888007911, Email: TQLVHDZNhaTrang<br/>* Tổ QLVH DZ Cam Ranh, SĐT: 0839861405, Email: TQLVHDZCamRanh<br/>* Tổ QLVH DZ Phan Rang, SĐT: 0866236556, Email:  toqlvhdzphanrang@gmail.com </i>", style_1))
+        content.append(Paragraph(f"Đơn vị QLVH:<br/>* <i>Tổ QLVH DZ Nha Trang, SĐT: 0888007911, Email: TQLVHDZNhaTrang@gmail.com <br/>* Tổ QLVH DZ Cam Ranh, SĐT: 0839861405, Email: TQLVHDZCamRanh@gmail.com <br/>* Tổ QLVH DZ Phan Rang, SĐT: 0866236556, Email:  toqlvhdzphanrang@gmail.com </i>", style_1))
 
     doc.build(content)
 
